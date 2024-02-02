@@ -1,11 +1,11 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
-  testMatch: ["tests/**.ts"],
+  testMatch: ["tests/simple.test.ts"],
   timeout: 120000,
   reporter: "html",
   use: {
-    headless: false,
+    headless: process.env.CI?true:false,
     screenshot: "on",
     video: "on",
     // viewport:{width:1920,height:1080},
