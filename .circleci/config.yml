@@ -1,0 +1,19 @@
+version: 2.1
+jobs:
+  run-test:
+    docker:
+      - image: mcr.microsoft.com/playwright:v1.41.1-jammy
+    # Steps to the job
+    steps:
+      - checkout
+      - run:
+          name: Download dependency          
+          command: npm ci
+      - run:
+          name: Run tests
+          command: npm run test      
+# Invoke jobs via workflows
+workflows:
+  run-test-workflow:
+    jobs:
+      - run-test
